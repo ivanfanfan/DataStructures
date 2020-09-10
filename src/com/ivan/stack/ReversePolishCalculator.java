@@ -56,7 +56,7 @@ public class ReversePolishCalculator {
                 stack.push(result+"");
             }
         }
-        return Integer.parseInt(stack.pop());
+        return Integer.parseInt(stack.pop());//return result ;
     }
 
     /**
