@@ -6,7 +6,7 @@ public class Calculor {
 
     public static void main(String[] args) {
         Calculor calculor = new Calculor();
-        int arithmetic = calculor.arithmetic("3+5*4-2+1");
+        int arithmetic = calculor.arithmetic("10+5*4-2+1");
         System.out.println(arithmetic);
     }
 
@@ -25,11 +25,10 @@ public class Calculor {
         //定义指针用于扫描
         int index = 0;
         int calculate = 0;
-        while (index<expression.length()) {
+        String number = "";
+        while (index < expression.length()) {
             //依次得到每一个字符
             char ch = expression.charAt(index);
-            System.out.println(ch);
-            index ++;
             //判断是否是操作符
             if (isOperator(ch)) {
                 //判断栈是否为空
@@ -50,18 +49,38 @@ public class Calculor {
                     //栈空
                     operatorStack.push(String.valueOf(ch));
                 }
-            }else {
-                numberStack.push(String.valueOf(ch));
+            } else {
+                /**
+                 * 进行数字拼接
+                 */
+                number += ch;
+                /**
+                 * 每添加一个数字进来都要看下一个是否是 数字 如果是数字就不用压栈 不是数字就压栈
+                 * 最后index+1 所以倒数第二个就不用看了 index < expression.length()-1
+                 */
+                if (index < expression.length() - 1) {
+                    if (isOperator(expression.charAt(index + 1))) {
+                        numberStack.push(number);
+                        number = "";
+                    }
+                } else {
+                    numberStack.push(number);
+                }
             }
+            index++;
 
         }
 
         //如果最后栈非空就将符号栈全部弹出并计算
-        while (!operatorStack.isEmpty()){
+        /**
+         * 其实这个代码是将四则运算 简化成了 加减法
+         */
+        while (!operatorStack.isEmpty()) {
             String pop = operatorStack.pop();
             calculate = calculate(Integer.parseInt(numberStack.pop()), Integer.parseInt(numberStack.pop()), pop.charAt(0));
-            numberStack.push(calculate+"");
+            numberStack.push(calculate + "");
         }
+
         return calculate;
     }
 
