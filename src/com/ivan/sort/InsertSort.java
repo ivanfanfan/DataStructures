@@ -42,7 +42,7 @@ public class InsertSort {
      * 算法和数据结构中的代码
      * 定义指针指向未参与排序的序列 第一位进行遍历  for (int p = 1; p < arr.length; p++) {
      * 定义tmp变量 记录当前所进行排序的元素，int tmp = arr[p];
-     * 从右到左开始遍历已经排序好的序列 并进行判断是否满足当前要求  for (j = p;j>0&&tmp<arr[j-1];j-- )
+     * 从右到左开始遍历已经排序好的序列 并进行判断是否满足当前要求  for (j = p;j>=1&&tmp<arr[j-1];j-- )
      * 如果满足就将所进行比较的元素向后移动一位 arr[j] = arr[j-1] 不满足就说明找到了当前位置 记录在j中
      * 将tmp赋值给arr[j]  arr[j] = tmp;
      *
@@ -53,7 +53,7 @@ public class InsertSort {
         int j;
         for (int p = 1; p < arr.length; p++) {
             int tmp = arr[p];
-            for (j = p;j>0&&tmp<arr[j-1];j-- ){
+            for (j = p;j>=1&&tmp<arr[j-1];j-- ){
                 arr[j]=arr[j-1];
             }
             arr[j] = tmp;
