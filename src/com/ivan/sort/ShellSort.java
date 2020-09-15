@@ -7,8 +7,7 @@ public class ShellSort {
     public static void main(String[] args) {
         ShellSort shellSort = new ShellSort();
         shellSort.shellSort();
-        System.out.println("--------------");
-        shellSort.shellSort1();
+
     }
     public void shellSort(){
         int[] arr={8,9,1,7,21,3,5,4,6,0,2};
