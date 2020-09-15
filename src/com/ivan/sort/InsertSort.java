@@ -46,7 +46,7 @@ public class InsertSort {
      * 如果满足就将所进行比较的元素向后移动一位 arr[j] = arr[j-1] 不满足就说明找到了当前位置 记录在j中
      * 将tmp赋值给arr[j]  arr[j] = tmp;
      *
-     * 循环以上策略直到结束
+     * 循环以上策略直到结束。
      */
     public void insertSort1() {
         int[] arr = {-1, 3, 2, 5, 10, -6};
